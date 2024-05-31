@@ -1,6 +1,12 @@
 target/
+.DS_Store
 
 # The following files are generated/updated by Hilla
 node_modules/
 src/main/frontend/generated/
 vite.generated.ts
+
+src/main/bundles
+.vscode/.copilot-plugin
+
+fly.toml

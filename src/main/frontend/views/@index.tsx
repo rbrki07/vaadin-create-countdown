@@ -1,36 +1,36 @@
-import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
-import { useSignal } from '@vaadin/hilla-react-signals';
-import { Button } from '@vaadin/react-components/Button.js';
-import { Notification } from '@vaadin/react-components/Notification.js';
-import { TextField } from '@vaadin/react-components/TextField.js';
-import { HelloWorldService } from 'Frontend/generated/endpoints.js';
+import { useEffect } from "react";
+
+import { ViewConfig } from "@vaadin/hilla-file-router/types.js";
+import { HorizontalLayout, VerticalLayout } from "@vaadin/react-components";
+import { useSignal } from "@vaadin/hilla-react-signals";
+
+import Countdown from "Frontend/components/Countdown";
+import { CountdownService } from "Frontend/generated/endpoints";
 
 export const config: ViewConfig = {
-  menu: { order: 0, icon: 'line-awesome/svg/globe-solid.svg' },
-  title: 'Hello World',
+  menu: { order: 0, icon: "line-awesome/svg/stopwatch-solid.svg" },
+  title: "Countdown",
 };
 
-export default function HelloWorldView() {
-  const name = useSignal('');
+export default function CountdownView() {
+  const endTime = useSignal<number | null>(null);
+  useEffect(() => {
+    CountdownService.getEndTime().then((time) => (endTime.value = Date.parse(time)));
+  }, [endTime]);
 
   return (
-    <>
-      <section className="flex p-m gap-m items-end">
-        <TextField
-          label="Your name"
-          onValueChanged={(e) => {
-            name.value = e.detail.value;
-          }}
-        />
-        <Button
-          onClick={async () => {
-            const serverResponse = await HelloWorldService.sayHello(name.value);
-            Notification.show(serverResponse);
-          }}
-        >
-          Say hello
-        </Button>
-      </section>
-    </>
+    <VerticalLayout className="min-h-full p-s justify-center items-center">
+      <HorizontalLayout className="w-full justify-center items-center">
+        <img className="max-w-full" src="images/vaadin-create-logo.webp" alt="Vaadin Create Logo" />
+      </HorizontalLayout>
+      <HorizontalLayout>
+        <h1 className="text-xl m-l">will take place in</h1>
+      </HorizontalLayout>
+      {endTime.value && (
+        <HorizontalLayout className="w-full justify-center items-center">
+          <Countdown endTime={endTime.value} />
+        </HorizontalLayout>
+      )}
+    </VerticalLayout>
   );
 }
