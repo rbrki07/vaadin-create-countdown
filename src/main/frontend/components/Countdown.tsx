@@ -46,7 +46,7 @@ export default function Countdown({ endTime }: { endTime: number }) {
       <VerticalLayout className="mr-xs">
         <CountdownCircleTimer
           {...timerProps}
-          colors="#EA355A" // RGB: 234, 53, 90
+          colors="#3C81F2" // RGB: 60, 129, 242
           duration={yearSeconds}
           initialRemainingTime={remainingTime % yearSeconds}
         >
@@ -60,7 +60,7 @@ export default function Countdown({ endTime }: { endTime: number }) {
       <VerticalLayout className="mr-xs">
         <CountdownCircleTimer
           {...timerProps}
-          colors="#E7532F" // RGB: 231, 83, 47
+          colors="#5276F3" // RGB: 82, 118, 243
           duration={daySeconds}
           initialRemainingTime={remainingTime % daySeconds}
           onComplete={(totalElapsedTime) => ({
@@ -77,7 +77,7 @@ export default function Countdown({ endTime }: { endTime: number }) {
       <VerticalLayout className="mr-xs">
         <CountdownCircleTimer
           {...timerProps}
-          colors="#E78B33" // RGB: 231, 139, 51
+          colors="#676AF3" // RGB: 103, 106, 243
           duration={hourSeconds}
           initialRemainingTime={remainingTime % hourSeconds}
           onComplete={(totalElapsedTime) => ({
@@ -94,7 +94,7 @@ export default function Countdown({ endTime }: { endTime: number }) {
       <VerticalLayout>
         <CountdownCircleTimer
           {...timerProps}
-          colors="#EBB740" // RGB: 235, 183, 64
+          colors="#7D5EF3" // RGB: 125, 94, 243
           duration={minuteSeconds}
           initialRemainingTime={remainingTime % minuteSeconds}
           onComplete={(totalElapsedTime) => ({

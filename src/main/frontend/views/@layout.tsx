@@ -7,6 +7,7 @@ import { AppLayout, DrawerToggle, Icon, SideNav, SideNavItem } from "@vaadin/rea
 
 const defaultTitle = document.title;
 const documentTitleSignal = signal("");
+// @ts-expect-error("")
 effect(() => (document.title = documentTitleSignal.value));
 
 // Publish for Vaadin to use

@@ -19,9 +19,9 @@ export default function CountdownView() {
   }, [endTime]);
 
   return (
-    <VerticalLayout className="min-h-full p-s justify-center items-center">
-      <HorizontalLayout className="w-full justify-center items-center">
-        <img className="max-w-full" src="images/vaadin-create-logo.webp" alt="Vaadin Create Logo" />
+    <VerticalLayout className="min-h-full p-s justify-center items-center reindeer-background">
+      <HorizontalLayout className="w-full max-w-screen-sm justify-center items-center">
+        <img width="100%" height="100%" src="images/vaadin-create-logo.svg" alt="Vaadin Create Logo" />
       </HorizontalLayout>
       <HorizontalLayout>
         <h1 className="text-xl m-l">will take place in</h1>
