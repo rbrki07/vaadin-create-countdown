@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { useWindowSize } from "@uidotdev/usehooks";
-import { HorizontalLayout, VerticalLayout } from "@vaadin/react-components";
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { useMemo } from 'react';
+import { useWindowSize } from '@uidotdev/usehooks';
+import { HorizontalLayout, VerticalLayout } from '@vaadin/react-components';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -48,11 +48,10 @@ export default function Countdown({ endTime }: { endTime: number }) {
           {...timerProps}
           colors="#3C81F2" // RGB: 60, 129, 242
           duration={yearSeconds}
-          initialRemainingTime={remainingTime % yearSeconds}
-        >
+          initialRemainingTime={remainingTime % yearSeconds}>
           {({ elapsedTime, color }) => (
             <span className="text-m text-center" style={{ color }}>
-              {renderTime("days", getTimeDays(yearSeconds - elapsedTime))}
+              {renderTime('days', getTimeDays(yearSeconds - elapsedTime))}
             </span>
           )}
         </CountdownCircleTimer>
@@ -65,11 +64,10 @@ export default function Countdown({ endTime }: { endTime: number }) {
           initialRemainingTime={remainingTime % daySeconds}
           onComplete={(totalElapsedTime) => ({
             shouldRepeat: remainingTime - totalElapsedTime > hourSeconds,
-          })}
-        >
+          })}>
           {({ elapsedTime, color }) => (
             <span className="text-m text-center" style={{ color }}>
-              {renderTime("hours", getTimeHours(daySeconds - elapsedTime))}
+              {renderTime('hours', getTimeHours(daySeconds - elapsedTime))}
             </span>
           )}
         </CountdownCircleTimer>
@@ -82,11 +80,10 @@ export default function Countdown({ endTime }: { endTime: number }) {
           initialRemainingTime={remainingTime % hourSeconds}
           onComplete={(totalElapsedTime) => ({
             shouldRepeat: remainingTime - totalElapsedTime > minuteSeconds,
-          })}
-        >
+          })}>
           {({ elapsedTime, color }) => (
             <span className="text-m text-center" style={{ color }}>
-              {renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))}
+              {renderTime('minutes', getTimeMinutes(hourSeconds - elapsedTime))}
             </span>
           )}
         </CountdownCircleTimer>
@@ -99,11 +96,10 @@ export default function Countdown({ endTime }: { endTime: number }) {
           initialRemainingTime={remainingTime % minuteSeconds}
           onComplete={(totalElapsedTime) => ({
             shouldRepeat: remainingTime - totalElapsedTime > 0,
-          })}
-        >
+          })}>
           {({ elapsedTime, color }) => (
             <span className="text-m text-center" style={{ color }}>
-              {renderTime("seconds", getTimeSeconds(elapsedTime))}
+              {renderTime('seconds', getTimeSeconds(elapsedTime))}
             </span>
           )}
         </CountdownCircleTimer>

@@ -1,25 +1,27 @@
-import { Suspense, useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Suspense, useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { createMenuItems, useViewConfig } from "@vaadin/hilla-file-router/runtime.js";
-import { effect, signal } from "@vaadin/hilla-react-signals";
-import { AppLayout, DrawerToggle, Icon, SideNav, SideNavItem } from "@vaadin/react-components";
+import { createMenuItems, useViewConfig } from '@vaadin/hilla-file-router/runtime.js';
+import { effect, signal } from '@vaadin/hilla-react-signals';
+import { AppLayout, DrawerToggle, Icon, SideNav, SideNavItem } from '@vaadin/react-components';
 
-const defaultTitle = document.title;
-const documentTitleSignal = signal("");
-// @ts-expect-error("")
-effect(() => (document.title = documentTitleSignal.value));
+const documentTitleSignal = signal('');
+effect(() => {
+  document.title = documentTitleSignal.value;
+});
 
 // Publish for Vaadin to use
 (window as any).Vaadin.documentTitleSignal = documentTitleSignal;
 
 export default function MainLayout() {
-  const currentTitle = useViewConfig()?.title ?? defaultTitle;
+  const currentTitle = useViewConfig()?.title;
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    documentTitleSignal.value = currentTitle;
+    if (currentTitle) {
+      documentTitleSignal.value = currentTitle;
+    }
   }, [currentTitle]);
 
   return (

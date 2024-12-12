@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { ViewConfig } from "@vaadin/hilla-file-router/types.js";
-import { HorizontalLayout, VerticalLayout } from "@vaadin/react-components";
-import { useSignal } from "@vaadin/hilla-react-signals";
+import { ViewConfig } from '@vaadin/hilla-file-router/types.js';
+import { HorizontalLayout, VerticalLayout } from '@vaadin/react-components';
+import { useSignal } from '@vaadin/hilla-react-signals';
 
-import Countdown from "Frontend/components/Countdown";
-import { CountdownService } from "Frontend/generated/endpoints";
+import Countdown from 'Frontend/components/Countdown';
+import { CountdownService } from 'Frontend/generated/endpoints';
 
 export const config: ViewConfig = {
-  menu: { order: 0, icon: "line-awesome/svg/stopwatch-solid.svg" },
-  title: "Countdown",
+  menu: { order: 0, icon: 'line-awesome/svg/stopwatch-solid.svg' },
+  title: 'Countdown',
 };
 
 export default function CountdownView() {
